@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { App } from './app';
 import { AppRoutingModule } from './app-routing-module';
 import { AlumnosModule } from './features/alumnos/alumnos.module';
+import { CursosModule } from './features/cursos/cursos.module';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -16,6 +17,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     LayoutModule,
     AlumnosModule,
+    CursosModule,
     SharedModule,
   ],
   providers: [provideBrowserGlobalErrorListeners()],

@@ -4,10 +4,11 @@ import { TituloResaltadoDirective } from './directives/titulo-resaltado.directiv
 import { NombreCompletoPipe } from './pipes/nombre-completo.pipe';
 
 // Módulos de Angular Material
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
@@ -42,8 +43,10 @@ import { RouterModule } from '@angular/router';
     MatSidenavModule,
     MatListModule,
     MatDividerModule,
+    MatChipsModule,
 
     // Forms
+    FormsModule,
     ReactiveFormsModule,
     CommonModule,
     RouterModule,
