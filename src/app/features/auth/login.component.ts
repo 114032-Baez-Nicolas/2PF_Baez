@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../core/services/auth.service';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,18 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   registroForm!: FormGroup;
   mostrarRegistro = false;
+  isDarkMode = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private themeService: ThemeService
+  ) {
+    this.themeService.isDarkMode$.subscribe((isDark) => {
+      this.isDarkMode = isDark;
+    });
+  }
 
   ngOnInit(): void {
     this.inicializarFormularios();
@@ -81,5 +92,9 @@ export class LoginComponent implements OnInit {
     this.mostrarRegistro = !this.mostrarRegistro;
     this.loginForm.reset();
     this.registroForm.reset();
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
   }
 }

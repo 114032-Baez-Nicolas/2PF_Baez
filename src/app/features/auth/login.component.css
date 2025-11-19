@@ -4,6 +4,20 @@
   align-items: center;
   min-height: 100vh;
   background: #ffffff;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+body.dark-theme .login-container,
+body[color-scheme='dark'] .login-container {
+  background-color: #121212;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
 }
 
 .login-card {

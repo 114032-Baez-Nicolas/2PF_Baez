@@ -308,3 +308,30 @@ body[color-scheme='dark'] mat-sidenav-content {
 body[color-scheme='dark'] .mat-drawer-content {
   background-color: #121212 !important;
 }
+
+body.dark-theme .login-container,
+body[color-scheme='dark'] .login-container {
+  background-color: #121212 !important;
+}
+
+body.dark-theme .login-card,
+body[color-scheme='dark'] .login-card {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-theme .login-card h1,
+body[color-scheme='dark'] .login-card h1 {
+  color: #90caf9 !important;
+}
+
+body.dark-theme .mat-mdc-tooltip,
+body[color-scheme='dark'] .mat-mdc-tooltip {
+  background-color: rgba(97, 97, 97, 0.95) !important;
+  color: #ffffff !important;
+}
+
+body.dark-theme .mat-mdc-tooltip .mdc-tooltip__surface,
+body[color-scheme='dark'] .mat-mdc-tooltip .mdc-tooltip__surface {
+  background-color: rgba(97, 97, 97, 0.95) !important;
+  color: #ffffff !important;
+}

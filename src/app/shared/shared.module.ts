@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { TituloResaltadoDirective } from './directives/titulo-resaltado.directive';
 import { NombreCompletoPipe } from './pipes/nombre-completo.pipe';
 
-// Módulos de Angular Material
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
