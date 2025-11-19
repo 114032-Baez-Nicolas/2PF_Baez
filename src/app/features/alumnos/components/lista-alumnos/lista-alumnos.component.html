@@ -1,52 +1,79 @@
-<div class="lista-container">
-  <div class="header">
-    <h2 appTituloResaltado>Listado de Alumnos</h2>
-    <button mat-raised-button color="primary" routerLink="/alumnos/nuevo">
-      <mat-icon>add</mat-icon>
-      Nuevo Alumno
-    </button>
+<div class="container">
+  <div class="header-section">
+    <h1 appTituloResaltado>Gestión de Alumnos</h1>
+
+    <div class="acciones-principales">
+      <mat-form-field appearance="outline" class="buscador">
+        <mat-label>Buscar alumno</mat-label>
+        <input
+          matInput
+          [(ngModel)]="busqueda"
+          (input)="filtrarAlumnos()"
+          placeholder="Nombre, apellido o email..."
+        />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="irANuevoAlumno()">
+        <mat-icon>add</mat-icon>
+        Nuevo Alumno
+      </button>
+    </div>
   </div>
 
-  <table mat-table [dataSource]="alumnos" class="mat-elevation-z8">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let alumno">{{ alumno.id }}</td>
-    </ng-container>
+  @if (alumnosFiltrados.length > 0) {
+  <div class="alumnos-grid">
+    @for (alumno of alumnosFiltrados; track alumno.id) {
+    <mat-card class="alumno-card">
+      <mat-card-header>
+        <div mat-card-avatar class="avatar-circle">
+          {{ alumno.nombre.charAt(0) }}{{ alumno.apellido.charAt(0) }}
+        </div>
+        <mat-card-title>{{ alumno | nombreCompleto }}</mat-card-title>
+        <mat-card-subtitle>{{ alumno.email }}</mat-card-subtitle>
+      </mat-card-header>
 
-    <ng-container matColumnDef="nombreCompleto">
-      <th mat-header-cell *matHeaderCellDef>Nombre Completo</th>
-      <td mat-cell *matCellDef="let alumno">{{ alumno | nombreCompleto }}</td>
-    </ng-container>
+      <mat-card-content>
+        <div class="info-detalle">
+          <div class="info-item">
+            <mat-icon>event</mat-icon>
+            <span>Inscripción: {{ alumno.fechaInscripcion | date : 'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="info-item">
+            <mat-icon>{{ alumno.activo ? 'check_circle' : 'cancel' }}</mat-icon>
+            <span>{{ alumno.activo ? 'Activo' : 'Inactivo' }}</span>
+          </div>
+        </div>
+      </mat-card-content>
 
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let alumno">{{ alumno.email }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="fechaInscripcion">
-      <th mat-header-cell *matHeaderCellDef>Fecha de Inscripción</th>
-      <td mat-cell *matCellDef="let alumno">{{ alumno.fechaInscripcion | date : 'dd/MM/yyyy' }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="activo">
-      <th mat-header-cell *matHeaderCellDef>Estado</th>
-      <td mat-cell *matCellDef="let alumno">
-        <span [class.activo]="alumno.activo" [class.inactivo]="!alumno.activo">
-          {{ alumno.activo ? 'Activo' : 'Inactivo' }}
-        </span>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="acciones">
-      <th mat-header-cell *matHeaderCellDef>Acciones</th>
-      <td mat-cell *matCellDef="let alumno">
-        <button mat-icon-button color="warn" (click)="eliminarAlumno(alumno.id)">
-          <mat-icon>delete</mat-icon>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="verDetalle(alumno)">
+          <mat-icon>visibility</mat-icon>
+          Ver
         </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+        <button mat-button color="accent" (click)="editarAlumno(alumno)">
+          <mat-icon>edit</mat-icon>
+          Editar
+        </button>
+        <button mat-button color="warn" (click)="eliminarAlumno(alumno)">
+          <mat-icon>delete</mat-icon>
+          Eliminar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    }
+  </div>
+  } @else {
+  <mat-card class="sin-resultados">
+    <mat-card-content>
+      <mat-icon>search_off</mat-icon>
+      <h2>No se encontraron alumnos</h2>
+      @if (busqueda) {
+      <p>Probá con otros términos</p>
+      } @else {
+      <p>No hay alumnos registrados</p>
+      }
+    </mat-card-content>
+  </mat-card>
+  }
 </div>

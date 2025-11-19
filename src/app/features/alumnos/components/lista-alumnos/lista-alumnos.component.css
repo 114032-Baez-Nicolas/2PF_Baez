@@ -1,29 +1,115 @@
-.lista-container {
+.container {
   padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.header-section {
+  margin-bottom: 30px;
+}
+
+.header-section h1 {
   margin-bottom: 20px;
 }
 
-h2 {
-  margin: 0;
-  color: #3f51b5;
+.acciones-principales {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-table {
-  width: 100%;
+.buscador {
+  flex: 1;
+  min-width: 250px;
 }
 
-.activo {
-  color: #4caf50;
+.alumnos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.alumno-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.alumno-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-circle {
+  background-color: #3f51b5;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
+  font-size: 18px;
 }
 
-.inactivo {
-  color: #f44336;
-  font-weight: bold;
+.info-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.info-item mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px;
+}
+
+mat-card-actions button {
+  margin-left: 8px;
+}
+
+.sin-resultados {
+  text-align: center;
+  padding: 40px;
+  margin-top: 40px;
+}
+
+.sin-resultados mat-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.sin-resultados h2 {
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 10px;
+}
+
+.sin-resultados p {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .alumnos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .acciones-principales {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
