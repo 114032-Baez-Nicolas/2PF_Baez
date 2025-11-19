@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "2PF_Baez": {
+    "1PF-Baez": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -35,6 +35,7 @@
               }
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css"
             ]
           },
@@ -66,10 +67,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "2PF_Baez:build:production"
+              "buildTarget": "1PF-Baez:build:production"
             },
             "development": {
-              "buildTarget": "2PF_Baez:build:development"
+              "buildTarget": "1PF-Baez:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -98,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "498f9097-983c-4b27-8100-8f867612d4a0"
   }
 }

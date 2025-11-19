@@ -1,11 +1,15 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   standalone: false,
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('2PF_Baez');
+  sidenavOpened = true;
+
+  toggleSidenav(): void {
+    this.sidenavOpened = !this.sidenavOpened;
+  }
 }
