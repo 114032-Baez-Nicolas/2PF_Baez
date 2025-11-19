@@ -1,3 +1,4 @@
+@if (mostrarLayout) {
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" [opened]="sidenavOpened" class="sidenav">
     <app-navbar></app-navbar>
@@ -11,3 +12,6 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+} @else {
+<router-outlet></router-outlet>
+}
