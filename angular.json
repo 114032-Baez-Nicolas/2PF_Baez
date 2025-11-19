@@ -23,6 +23,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "docs",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -67,10 +68,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "1PF-Baez:build:production"
+              "buildTarget": "2PF-Baez:build:production"
             },
             "development": {
-              "buildTarget": "1PF-Baez:build:development"
+              "buildTarget": "2PF-Baez:build:development"
             }
           },
           "defaultConfiguration": "development"
