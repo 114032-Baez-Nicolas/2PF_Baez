@@ -4,7 +4,18 @@
   </button>
   <span class="titulo-app">Sistema de Gestión Educativa</span>
   <span class="espaciador"></span>
-  <button mat-icon-button>
-    <mat-icon>account_circle</mat-icon>
+  <button
+    mat-icon-button
+    (click)="toggleTheme()"
+    [matTooltip]="isDarkMode ? 'Modo claro' : 'Modo oscuro'"
+  >
+    @if (isDarkMode) {
+    <mat-icon>light_mode</mat-icon>
+    } @else {
+    <mat-icon>dark_mode</mat-icon>
+    }
+  </button>
+  <button mat-icon-button (click)="cerrarSesion()" matTooltip="Cerrar sesión">
+    <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>

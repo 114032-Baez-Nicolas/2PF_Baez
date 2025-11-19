@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CursosService } from '../../../../core/services/cursos.service';
 import { Curso } from '../../models/curso.interface';
+import { EditarCursoDialogComponent } from '../editar-curso-dialog/editar-curso-dialog.component';
 
 @Component({
   selector: 'app-lista-cursos',
@@ -15,7 +17,11 @@ export class ListaCursosComponent implements OnInit {
   cursosFiltrados: Curso[] = [];
   busqueda: string = '';
 
-  constructor(private cursosService: CursosService, private router: Router) {}
+  constructor(
+    private cursosService: CursosService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.cargarCursos();
@@ -46,7 +52,22 @@ export class ListaCursosComponent implements OnInit {
   }
 
   editarCurso(curso: Curso): void {
-    console.log('Editar curso:', curso);
+    const dialogRef = this.dialog.open(EditarCursoDialogComponent, {
+      width: '600px',
+      data: { curso },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.cursosService.actualizarCurso(result);
+        Swal.fire({
+          title: 'Actualizado',
+          text: 'El curso se actualizó correctamente',
+          icon: 'success',
+          confirmButtonColor: '#3f51b5',
+        });
+      }
+    });
   }
 
   eliminarCurso(curso: Curso): void {

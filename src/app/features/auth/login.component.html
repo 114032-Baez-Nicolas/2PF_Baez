@@ -1,0 +1,92 @@
+<div class="login-container">
+  <button
+    mat-icon-button
+    class="theme-toggle"
+    (click)="toggleTheme()"
+    [matTooltip]="isDarkMode ? 'Modo claro' : 'Modo oscuro'"
+  >
+    @if (isDarkMode) {
+    <mat-icon>light_mode</mat-icon>
+    } @else {
+    <mat-icon>dark_mode</mat-icon>
+    }
+  </button>
+
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>
+        @if (mostrarRegistro) {
+        <h1>Registrarse</h1>
+        } @else {
+        <h1>Iniciar Sesión</h1>
+        }
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      @if (!mostrarRegistro) {
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <mat-form-field appearance="outline" class="campo-completo">
+          <mat-label>Usuario</mat-label>
+          <input matInput formControlName="username" />
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="campo-completo">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-icon matPrefix>lock</mat-icon>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="boton-completo"
+          [disabled]="!loginForm.valid"
+        >
+          Ingresar
+        </button>
+
+        <button mat-button type="button" class="boton-completo" (click)="cambiarModo()">
+          ¿No tenés cuenta? Registrate
+        </button>
+      </form>
+      } @else {
+      <form [formGroup]="registroForm" (ngSubmit)="onRegistro()">
+        <mat-form-field appearance="outline" class="campo-completo">
+          <mat-label>Nombre completo</mat-label>
+          <input matInput formControlName="nombre" />
+          <mat-icon matPrefix>badge</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="campo-completo">
+          <mat-label>Usuario</mat-label>
+          <input matInput formControlName="username" />
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="campo-completo">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-icon matPrefix>lock</mat-icon>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="boton-completo"
+          [disabled]="!registroForm.valid"
+        >
+          Registrarse
+        </button>
+
+        <button mat-button type="button" class="boton-completo" (click)="cambiarModo()">
+          ¿Ya tenés cuenta? Iniciá sesión
+        </button>
+      </form>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

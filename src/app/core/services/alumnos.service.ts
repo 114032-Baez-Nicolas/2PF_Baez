@@ -6,7 +6,8 @@ import { Alumno } from '../../features/alumnos/models/alumno.interface';
   providedIn: 'root',
 })
 export class AlumnosService {
-  private alumnosSubject = new BehaviorSubject<Alumno[]>([
+  private readonly STORAGE_KEY = 'alumnos';
+  private alumnosIniciales: Alumno[] = [
     {
       id: 1,
       nombre: 'Juan',
@@ -31,11 +32,28 @@ export class AlumnosService {
       fechaInscripcion: new Date('2024-03-10'),
       activo: false,
     },
-  ]);
+  ];
 
+  private alumnosSubject = new BehaviorSubject<Alumno[]>(this.cargarDesdeLocalStorage());
   alumnos$: Observable<Alumno[]> = this.alumnosSubject.asObservable();
 
   constructor() {}
+
+  private cargarDesdeLocalStorage(): Alumno[] {
+    const data = localStorage.getItem(this.STORAGE_KEY);
+    if (data) {
+      const alumnos = JSON.parse(data);
+      return alumnos.map((a: any) => ({
+        ...a,
+        fechaInscripcion: new Date(a.fechaInscripcion),
+      }));
+    }
+    return this.alumnosIniciales;
+  }
+
+  private guardarEnLocalStorage(alumnos: Alumno[]): void {
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(alumnos));
+  }
 
   obtenerAlumnos(): Observable<Alumno[]> {
     return this.alumnos$;
@@ -45,7 +63,9 @@ export class AlumnosService {
     const alumnos = this.alumnosSubject.value;
     const nuevoId = alumnos.length > 0 ? Math.max(...alumnos.map((a) => a.id)) + 1 : 1;
     const nuevoAlumno = { ...alumno, id: nuevoId };
-    this.alumnosSubject.next([...alumnos, nuevoAlumno]);
+    const nuevosAlumnos = [...alumnos, nuevoAlumno];
+    this.guardarEnLocalStorage(nuevosAlumnos);
+    this.alumnosSubject.next(nuevosAlumnos);
   }
 
   actualizarAlumno(alumno: Alumno): void {
@@ -53,12 +73,15 @@ export class AlumnosService {
     const index = alumnos.findIndex((a) => a.id === alumno.id);
     if (index !== -1) {
       alumnos[index] = alumno;
-      this.alumnosSubject.next([...alumnos]);
+      const nuevosAlumnos = [...alumnos];
+      this.guardarEnLocalStorage(nuevosAlumnos);
+      this.alumnosSubject.next(nuevosAlumnos);
     }
   }
 
   eliminarAlumno(id: number): void {
     const alumnos = this.alumnosSubject.value.filter((a) => a.id !== id);
+    this.guardarEnLocalStorage(alumnos);
     this.alumnosSubject.next(alumnos);
   }
 

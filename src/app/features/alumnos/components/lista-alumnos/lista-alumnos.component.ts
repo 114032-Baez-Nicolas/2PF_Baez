@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AlumnosService } from '../../../../core/services/alumnos.service';
 import { Alumno } from '../../models/alumno.interface';
+import { EditarAlumnoDialogComponent } from '../editar-alumno-dialog/editar-alumno-dialog.component';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -15,7 +17,11 @@ export class ListaAlumnosComponent implements OnInit {
   alumnosFiltrados: Alumno[] = [];
   busqueda: string = '';
 
-  constructor(private alumnosService: AlumnosService, private router: Router) {}
+  constructor(
+    private alumnosService: AlumnosService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.cargarAlumnos();
@@ -47,7 +53,22 @@ export class ListaAlumnosComponent implements OnInit {
   }
 
   editarAlumno(alumno: Alumno): void {
-    console.log('Editar alumno:', alumno);
+    const dialogRef = this.dialog.open(EditarAlumnoDialogComponent, {
+      width: '600px',
+      data: { alumno },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.alumnosService.actualizarAlumno(result);
+        Swal.fire({
+          title: 'Actualizado',
+          text: 'El alumno se actualizó correctamente',
+          icon: 'success',
+          confirmButtonColor: '#3f51b5',
+        });
+      }
+    });
   }
 
   eliminarAlumno(alumno: Alumno): void {
