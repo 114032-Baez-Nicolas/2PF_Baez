@@ -16,4 +16,13 @@
   flex: 1;
   padding: 20px;
   background-color: #f5f5f5;
+  transition: background-color 0.3s;
+}
+
+body.dark-theme .main-content {
+  background-color: #121212;
+}
+
+body.dark-theme .sidenav-container {
+  background-color: #121212;
 }

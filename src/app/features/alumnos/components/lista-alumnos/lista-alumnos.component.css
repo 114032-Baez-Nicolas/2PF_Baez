@@ -62,6 +62,7 @@
   gap: 8px;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.6);
+  transition: color 0.3s;
 }
 
 .info-item mat-icon {
