@@ -1,0 +1,21 @@
+Entrega 2
+
+holaa chat!, me ayudas con lo que tengo que hacer?, mira todos los documentos y archivos que te pase, fíjate que vamos a usar el repositorio de "2PF-Baez" para hacer lo siguiente:
+
+- CRUD DE CURSOS Y DE ALUMNOS
+- Estructura de carpetas: Core, feature y shared.. Utilizar navegación de rutas.. 
+- Optimizar tu proyecto front basado en angular, integrando lo trabajado en clases hasta el momento y respetando los aspectos técnicos y funcionales esenciales
+- Añadir modulos específicos
+- Uso de routing
+- Uso de angular material
+- Creación de servicios que devuelvan un observable con datos mockeados
+
+Se debe entregar: 
+- Agregar servicios de las entidades que permitan el ABM de los mismos
+- Utilizar estos servicios en los componentes
+- Modularizar la aplicación en app, core, shared y features modules
+- Es no standalone (se trabaja con module)
+- Que el uso de ia no sea notorio, lo menos notorio posible (IMPORTANTE)
+- Utilizar la navegación de rutas desde el menú lateras
+- Utilizar angular CLI
+- Generar un proyecto de angular que contemple la administración de alumnos, clases y cursos, utilizando angular material. ten en cuenta los aspectos técnicos y aspectos funcionales claves para que tu proyecto cumpla con los objetivos.

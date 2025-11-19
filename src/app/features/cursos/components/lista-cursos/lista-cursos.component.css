@@ -1,0 +1,128 @@
+.container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-section {
+  margin-bottom: 30px;
+}
+
+.header-section h1 {
+  margin-bottom: 20px;
+}
+
+.acciones-principales {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.buscador {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Grid de cards */
+.cursos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.curso-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.curso-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.curso-card mat-card-header {
+  margin-bottom: 15px;
+}
+
+.descripcion {
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 15px;
+  min-height: 60px;
+}
+
+.chip-activo {
+  background-color: #4caf50;
+  color: white;
+}
+
+.chip-inactivo {
+  background-color: #9e9e9e;
+  color: white;
+}
+
+.fechas-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.fecha-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.fecha-item mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px;
+}
+
+mat-card-actions button {
+  margin-left: 8px;
+}
+
+/* Sin resultados */
+.sin-resultados {
+  text-align: center;
+  padding: 40px;
+  margin-top: 40px;
+}
+
+.sin-resultados mat-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.sin-resultados h2 {
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 10px;
+}
+
+.sin-resultados p {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cursos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .acciones-principales {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
