@@ -13,3 +13,17 @@ mat-toolbar {
 .espaciador {
   flex: 1 1 auto;
 }
+
+.theme-toggle-btn {
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .titulo-app {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+  .theme-toggle-btn {
+    margin-right: 4px;
+  }
+}
