@@ -14,5 +14,13 @@
   </head>
   <body>
     <app-root></app-root>
+    <script>
+      (function () {
+        var path = location.pathname.toLowerCase();
+        if (path.includes('/login') || path.includes('/register')) {
+          document.body.classList.add('hide-layout');
+        }
+      })();
+    </script>
   </body>
 </html>

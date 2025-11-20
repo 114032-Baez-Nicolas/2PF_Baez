@@ -1,30 +1,26 @@
-# 1PF-Baez — Plataforma de Cursos
+# 2PF-Baez
+Segunda entrega del proyecto final - Curso Angular CoderHouse
 
-**Nicolás Báez** | Curso Angular - CoderHouse
-
-Aplicación web de gestión académica: administración completa de Alumnos con operaciones ABM (Alta, Baja, Modificación), tabla interactiva con Angular Material, formularios reactivos, pipes y directivas personalizadas.
-
-## 🚀 Enlaces
-
-- **GitHub Pages**: [Ver proyecto](https://114032-baez-nicolas.github.io/1PF-Baez/alumnos)
+## 🔗 Link del proyecto
+https://114032-baez-nicolas.github.io/2PF_Baez/login
 
 ## 🛠️ Tecnologías
-
 - Angular 20.3.2
 - Angular Material
 - TypeScript
-- Formularios Reactivos (ReactiveFormsModule)
+- Formularios Reactivos
 
-## ⚡ Funcionalidades
-
-- ABM completo de Alumnos (crear, editar, eliminar)
-- Tabla interactiva con Angular Material
-- Formularios reactivos con validaciones
+## ✨ Funcionalidades
+- CRUD completo de Alumnos
+- CRUD completo de Cursos  
+- Gestión de Clases
+- Navegación con rutas
+- Servicios que devuelven observables
+- Tablas con Angular Material
 - Pipe personalizado para nombre completo
-- Directiva personalizada para estilos de títulos
-- Layout responsivo con navbar lateral y toolbar
-- Arquitectura modular (módulos por funcionalidad)
+- Directiva personalizada para títulos
+
+El proyecto usa módulos (no standalone) y Angular Router para la navegación entre secciones.
 
 ---
-
-*Proyecto desarrollado para el curso de Angular en CoderHouse*
+**Nicolás Báez** - CoderHouse Angular
