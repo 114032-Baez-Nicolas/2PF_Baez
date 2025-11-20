@@ -1,17 +1,21 @@
-# 2PF-Baez
-Segunda entrega del proyecto final - Curso Angular CoderHouse
+# 2PF-Baez — Plataforma de Cursos
+
+**Nicolás Báez** | Curso Angular - CoderHouse
+
+Aplicación web de gestión académica modular: CRUD completo de Alumnos y Cursos, arquitectura basada en módulos (Core, Feature, Shared), navegación con Angular Router, servicios con Observables para manejo de datos, tablas interactivas con Angular Material, formularios reactivos, pipe personalizado para nombre completo y directiva personalizada para títulos resaltados.
 
 ## 🚀 Enlaces
 
 - **GitHub Pages**: [Ver proyecto](https://114032-baez-nicolas.github.io/2PF_Baez/login)
 
 ## 🛠️ Tecnologías
+
 - Angular 20.3.2
 - Angular Material
 - TypeScript
 - Formularios Reactivos
 
-## ✨ Funcionalidades
+## ⚡ Funcionalidades
 - CRUD completo de Alumnos
 - CRUD completo de Cursos  
 - Gestión de Clases
