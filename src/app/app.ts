@@ -24,17 +24,19 @@ export class App {
   }
 
   debeMostrarLayout(url: string): boolean {
-    let urlLimpia = url.split('?')[0].split('#')[0];
-    urlLimpia = urlLimpia.toLowerCase();
+    let urlLimpia = url.split('?')[0].split('#')[0].toLowerCase();
     if (urlLimpia.endsWith('/')) urlLimpia = urlLimpia.slice(0, -1);
-    const esAuth =
-      /\/(login|register)$/.test(urlLimpia) ||
+    if (
+      urlLimpia.includes('/login') ||
+      urlLimpia.includes('/register') ||
       urlLimpia === '' ||
       urlLimpia === '/2pf_baez' ||
       urlLimpia === '/2pf_baez/' ||
-      urlLimpia === '/';
-    const autenticado = this.authService.estaAutenticado();
-    return !esAuth && autenticado;
+      urlLimpia === '/'
+    ) {
+      return false;
+    }
+    return this.authService.estaAutenticado();
   }
 
   toggleSidenav(): void {
