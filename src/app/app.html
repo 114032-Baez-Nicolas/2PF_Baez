@@ -1,11 +1,6 @@
 @if (mostrarLayout) {
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #sidenav
-    [mode]="window.innerWidth < 768 ? 'over' : 'side'"
-    [opened]="sidenavOpened"
-    class="sidenav"
-  >
+  <mat-sidenav #sidenav mode="side" [opened]="sidenavOpened" class="sidenav">
     <app-navbar></app-navbar>
   </mat-sidenav>
 

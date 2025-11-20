@@ -34,22 +34,8 @@
 
         <mat-form-field appearance="outline" class="campo-completo">
           <mat-label>Contraseña</mat-label>
-          <input
-            matInput
-            [type]="ocultarPasswordLogin ? 'password' : 'text'"
-            formControlName="password"
-          />
+          <input matInput type="password" formControlName="password" />
           <mat-icon matPrefix>lock</mat-icon>
-          <button
-            mat-icon-button
-            matSuffix
-            type="button"
-            (click)="ocultarPasswordLogin = !ocultarPasswordLogin"
-            [attr.aria-label]="'Ocultar contraseña'"
-            [attr.aria-pressed]="!ocultarPasswordLogin"
-          >
-            <mat-icon>{{ ocultarPasswordLogin ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
         </mat-form-field>
 
         <button
@@ -82,22 +68,8 @@
 
         <mat-form-field appearance="outline" class="campo-completo">
           <mat-label>Contraseña</mat-label>
-          <input
-            matInput
-            [type]="ocultarPasswordRegistro ? 'password' : 'text'"
-            formControlName="password"
-          />
+          <input matInput type="password" formControlName="password" />
           <mat-icon matPrefix>lock</mat-icon>
-          <button
-            mat-icon-button
-            matSuffix
-            type="button"
-            (click)="ocultarPasswordRegistro = !ocultarPasswordRegistro"
-            [attr.aria-label]="'Ocultar contraseña'"
-            [attr.aria-pressed]="!ocultarPasswordRegistro"
-          >
-            <mat-icon>{{ ocultarPasswordRegistro ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
         </mat-form-field>
 
         <button
