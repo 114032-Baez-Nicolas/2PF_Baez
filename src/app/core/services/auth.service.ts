@@ -11,26 +11,11 @@ export class AuthService {
   private usuarioActualSubject = new BehaviorSubject<Usuario | null>(this.obtenerUsuarioActual());
   usuarioActual$: Observable<Usuario | null> = this.usuarioActualSubject.asObservable();
 
-  constructor() {
-    this.inicializarUsuarioDePrueba();
-  }
+  constructor() {}
 
   private obtenerUsuarioActual(): Usuario | null {
     const data = localStorage.getItem(this.CURRENT_USER_KEY);
     return data ? JSON.parse(data) : null;
-  }
-
-  private inicializarUsuarioDePrueba(): void {
-    const usuarios = this.obtenerUsuarios();
-    const usuarioPrueba = {
-      username: 'testuser@gmail.com',
-      password: '12345p',
-      nombre: 'Usuario de Prueba',
-    };
-    if (!usuarios.some((u) => u.username === usuarioPrueba.username)) {
-      usuarios.push(usuarioPrueba);
-      this.guardarUsuarios(usuarios);
-    }
   }
 
   private obtenerUsuarios(): Usuario[] {
