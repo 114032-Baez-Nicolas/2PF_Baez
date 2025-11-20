@@ -27,14 +27,14 @@ export class App {
     let urlLimpia = url.split('?')[0].split('#')[0];
     if (urlLimpia.endsWith('/')) urlLimpia = urlLimpia.slice(0, -1);
     const base = '/2PF_Baez';
-    const enLogin =
-      urlLimpia === '/login' ||
-      urlLimpia === '' ||
-      urlLimpia === '/' ||
-      urlLimpia === base ||
-      urlLimpia === base + '/';
+    if (urlLimpia.startsWith(base)) {
+      urlLimpia = urlLimpia.slice(base.length);
+      if (!urlLimpia.startsWith('/')) urlLimpia = '/' + urlLimpia;
+    }
+    const path = urlLimpia.toLowerCase();
+    const esLogin = path === '/login' || path === '' || path === '/';
     const autenticado = this.authService.estaAutenticado();
-    return !enLogin && autenticado;
+    return !esLogin && autenticado;
   }
 
   toggleSidenav(): void {
