@@ -1,6 +1,10 @@
 # 2PF-Baez
 Segunda entrega del proyecto final - Curso Angular CoderHouse
 
+## 🚀 Enlaces
+
+- **GitHub Pages**: [Ver proyecto](https://114032-baez-nicolas.github.io/2PF_Baez/login)
+
 ## 🔗 Link del proyecto
 https://114032-baez-nicolas.github.io/2PF_Baez/login
 
