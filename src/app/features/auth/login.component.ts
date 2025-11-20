@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
 
   inicializarFormularios(): void {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      username: ['testprueba@gmail.com', [Validators.required]],
+      password: ['1234p', [Validators.required]],
     });
 
     this.registroForm = this.fb.group({
@@ -90,7 +90,12 @@ export class LoginComponent implements OnInit {
 
   cambiarModo(): void {
     this.mostrarRegistro = !this.mostrarRegistro;
-    this.loginForm.reset();
+    if (!this.mostrarRegistro) {
+      this.loginForm.patchValue({
+        username: 'testprueba@gmail.com',
+        password: '1234p'
+      });
+    }
     this.registroForm.reset();
   }
 
