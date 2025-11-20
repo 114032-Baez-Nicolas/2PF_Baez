@@ -24,7 +24,8 @@ export class App {
   }
 
   debeMostrarLayout(url: string): boolean {
-    const enLogin = url.includes('/login');
+    const urlLimpia = url.split('?')[0].split('#')[0];
+    const enLogin = urlLimpia === '/login' || urlLimpia === '/' || urlLimpia === '';
     const autenticado = this.authService.estaAutenticado();
     return !enLogin && autenticado;
   }
