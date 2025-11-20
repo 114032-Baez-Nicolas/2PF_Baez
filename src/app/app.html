@@ -7,14 +7,16 @@
     class="sidenav"
     [fixedInViewport]="isMobile"
     [fixedTopGap]="0"
-    [fixedBottomGap]="0"
-  >
-    <!-- Botón X para cerrar en mobile -->
-    <div class="sidenav-header">
-      <button mat-icon-button (click)="sidenav.close()" class="close-btn" *ngIf="isMobile">
+    [fixedBottomGap]="0">
+
+    @if (isMobile) {
+    <div class="sidenav-header-mobile">
+      <h2 class="app-title">Sistema de Gestión Educativa</h2>
+      <button mat-icon-button (click)="sidenav.close()" class="close-btn">
         <mat-icon>close</mat-icon>
       </button>
     </div>
+    }
 
     <app-navbar></app-navbar>
   </mat-sidenav>
