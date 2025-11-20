@@ -11,6 +11,12 @@ export class AuthService {
   private usuarioActualSubject = new BehaviorSubject<Usuario | null>(this.obtenerUsuarioActual());
   usuarioActual$: Observable<Usuario | null> = this.usuarioActualSubject.asObservable();
 
+  private readonly CREDENCIAL_PRUEBA = {
+    username: 'testprueba@gmail.com',
+    password: '1234p',
+    nombre: 'Nicolás',
+  };
+
   constructor() {}
 
   private obtenerUsuarioActual(): Usuario | null {
@@ -49,6 +55,20 @@ export class AuthService {
     username: string,
     password: string
   ): Observable<{ success: boolean; message: string; usuario?: Usuario }> {
+    if (
+      username === this.CREDENCIAL_PRUEBA.username &&
+      password === this.CREDENCIAL_PRUEBA.password
+    ) {
+      const usuarioPrueba: Usuario = {
+        username: this.CREDENCIAL_PRUEBA.username,
+        password: this.CREDENCIAL_PRUEBA.password,
+        nombre: this.CREDENCIAL_PRUEBA.nombre,
+      };
+      localStorage.setItem(this.CURRENT_USER_KEY, JSON.stringify(usuarioPrueba));
+      this.usuarioActualSubject.next(usuarioPrueba);
+      return of({ success: true, message: 'Inicio de sesión exitoso', usuario: usuarioPrueba });
+    }
+
     const usuarios = this.obtenerUsuarios();
     const usuario = usuarios.find((u) => u.username === username && u.password === password);
 
