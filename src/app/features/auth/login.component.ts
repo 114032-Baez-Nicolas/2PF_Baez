@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   registroForm!: FormGroup;
   mostrarRegistro = false;
   isDarkMode = false;
+  ocultarPasswordLogin = true;
+  ocultarPasswordRegistro = true;
 
   constructor(
     private fb: FormBuilder,
@@ -92,6 +94,8 @@ export class LoginComponent implements OnInit {
     this.mostrarRegistro = !this.mostrarRegistro;
     this.loginForm.reset();
     this.registroForm.reset();
+    this.ocultarPasswordLogin = true;
+    this.ocultarPasswordRegistro = true;
   }
 
   toggleTheme(): void {

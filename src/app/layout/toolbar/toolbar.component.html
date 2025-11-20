@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button (click)="onToggle()">
+  <button mat-icon-button (click)="onToggle()" class="menu-btn">
     <mat-icon>menu</mat-icon>
   </button>
   <span class="titulo-app">Sistema de Gestión Educativa</span>
@@ -8,14 +8,11 @@
     mat-icon-button
     (click)="toggleTheme()"
     [matTooltip]="isDarkMode ? 'Modo claro' : 'Modo oscuro'"
+    class="theme-toggle-btn"
   >
-    @if (isDarkMode) {
-    <mat-icon>light_mode</mat-icon>
-    } @else {
-    <mat-icon>dark_mode</mat-icon>
-    }
+    <mat-icon>{{isDarkMode ? 'light_mode' : 'dark_mode'}}</mat-icon>
   </button>
-  <button mat-icon-button (click)="cerrarSesion()" matTooltip="Cerrar sesión">
+  <button mat-icon-button (click)="cerrarSesion()" matTooltip="Cerrar sesión" class="logout-btn">
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
