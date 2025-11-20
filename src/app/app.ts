@@ -24,8 +24,15 @@ export class App {
   }
 
   debeMostrarLayout(url: string): boolean {
-    const urlLimpia = url.split('?')[0].split('#')[0];
-    const enLogin = urlLimpia === '/login' || urlLimpia === '/' || urlLimpia === '';
+    let urlLimpia = url.split('?')[0].split('#')[0];
+    if (urlLimpia.endsWith('/')) urlLimpia = urlLimpia.slice(0, -1);
+    const base = '/2PF_Baez';
+    const enLogin =
+      urlLimpia === '/login' ||
+      urlLimpia === '' ||
+      urlLimpia === '/' ||
+      urlLimpia === base ||
+      urlLimpia === base + '/';
     const autenticado = this.authService.estaAutenticado();
     return !enLogin && autenticado;
   }
