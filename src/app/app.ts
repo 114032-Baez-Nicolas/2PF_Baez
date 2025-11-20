@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthService } from './core/services/auth.service';
@@ -12,15 +12,25 @@ import { AuthService } from './core/services/auth.service';
 export class App {
   sidenavOpened = true;
   mostrarLayout = true;
+  isMobile = false;
 
   constructor(private router: Router, private authService: AuthService) {
+    this.checkScreenSize();
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         this.mostrarLayout = this.debeMostrarLayout(event.url);
       });
-    // Para el primer render
     this.mostrarLayout = this.debeMostrarLayout(this.router.url);
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isMobile = window.innerWidth < 768;
   }
 
   debeMostrarLayout(url: string): boolean {

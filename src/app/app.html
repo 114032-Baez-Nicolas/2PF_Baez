@@ -1,11 +1,26 @@
 @if (mostrarLayout) {
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" [opened]="sidenavOpened" class="sidenav">
+  <mat-sidenav
+    #sidenav
+    [mode]="isMobile ? 'over' : 'side'"
+    [opened]="!isMobile && sidenavOpened"
+    class="sidenav"
+    [fixedInViewport]="isMobile"
+    [fixedTopGap]="0"
+    [fixedBottomGap]="0"
+  >
+    <!-- Botón X para cerrar en mobile -->
+    <div class="sidenav-header">
+      <button mat-icon-button (click)="sidenav.close()" class="close-btn" *ngIf="isMobile">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
     <app-navbar></app-navbar>
   </mat-sidenav>
 
   <mat-sidenav-content class="sidenav-content">
-    <app-toolbar (toggleSidenav)="toggleSidenav()"></app-toolbar>
+    <app-toolbar (toggleSidenav)="sidenav.toggle()"></app-toolbar>
 
     <div class="main-content">
       <router-outlet></router-outlet>
